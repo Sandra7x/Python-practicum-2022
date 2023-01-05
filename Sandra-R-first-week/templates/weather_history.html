@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+<title>Weather</title>
+{% endblock %}
+
+<title>Weather App</title>
+
+<br>
+    {% block content %}
+        <div class="container">
+            <h2><span class="bi bi-cloud-haze"></span>Weather history 2022</h2>
+        </div>
+        
+            <form class="container" method="post">
+                <div class="form-group">
+                    <label>City Name: </label>
+                    <input type="text" class="form-control" placeholder="Please type city name" name="city"/>
+                </div>
+                <br />
+                <button type="submit" class="btn btn-primary">Find</button>
+            </form>
+        
+        <br />
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="card text-dark bg-white mb-3" style="max-width: 25rem">
+                        <div class="card-body">
+                            <h1 class="card-title" style="text-align: center"><strong>{{ city_name }}</strong></h1>
+                            <h6 class="card-text">{{ lat_coord }}, {{ lon_coord }}</h6>
+                            <div class="info">
+                                <div class="right">
+                                    <h3 class="card-text">Min temperature: {{ min_temp }}&deg;C</h3>
+                                    <h3 class="card-text">Max temperature: {{ max_temp }}&deg;C</h3>
+                                    <h5 class="card-text">2022 average temperature: {{ average_temp }}&deg;C</h5>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <div class="container">
+            <div class="file">
+                <a class="link-to-file" href = "{{ url_for('weather_data') }}">Download weather data - excel</a>
+                <br>
+                <a class="link-to-file" href = "{{ url_for('chart_pdf') }}">Download weather data - pdf</a>
+            </div>
+        </div>    
+        </br>
+        <div class="container">
+            <table class = "table table-striped">
+                <thead>
+                    <tr>
+                        {% for col in range(1, sheet.max_column + 1): %}
+                            <th>{{ sheet.cell(1, col).value }}</th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in range(2, sheet.max_row + 1) %}
+                        <tr>
+                            {% for col in range(1, sheet.max_column + 1): %}
+                                <td>{{ sheet.cell(row, col).value }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endblock %}
+</body>
