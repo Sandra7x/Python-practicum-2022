@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+
+{% block title %}
+<title>Weather</title>
+{% endblock %}
+
+<title>Weather App</title>
+
+<body>
+    {% block content %}
+
+        <form class="container" method="post">
+            <h2><span class="bi bi-cloud-haze"></span>Weather Report</h2>
+
+            <div class="form-group">
+                <label>City Name: </label>
+                <input type="text" class="form-control" placeholder="Please type city name" name="city"/>
+            </div>
+            <br />
+            <button type="submit" class="btn btn-primary">Find</button>
+        </form>
+
+        <br />
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="card text-dark bg-white mb-3" style="max-width: 20rem">
+                        <div class="card-body">
+                            <h1 class="card-title">{{ city_name }}</h1>
+                            <h6 class="card-text">{{lat}}, {{lon}}</h6>
+                            <div class="info">
+                                <div class="right">
+                                    <h3 class="card-text">{{ temp }}&deg;C</h3>
+                                    <h4 class="card-text">{{ weather }}</h4>
+                                </div>
+                                <div class="icon">
+                                    &nbsp;&nbsp;
+                                    <img class="icon" src="http://openweathermap.org/img/w/{{icon}}.png" alt="weather image" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    {% endblock %}
+
+</body>
+
+

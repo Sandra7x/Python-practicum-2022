@@ -1,0 +1,50 @@
+title {
+    align-items: left;
+    }
+
+form {
+    margin: 30px auto;
+    width: 50% !important;
+    align-items: left;
+    }
+
+form input,
+label {
+    margin: 5px 0px;
+    width: fit-content;
+    }
+
+input.form-control {
+    font-weight: bold;
+    max-width: fit-content;
+    }
+
+.container {
+    width: 50% !important;
+    }
+
+.info {
+    display: flex;
+    }
+
+img.icon {
+    width: 100px;
+    }
+
+.card-body {
+    max-width: max-content;  
+    }
+
+.card-title {
+    align-items: center;
+    }
+
+a.link-to-file {
+    text-align: center;
+    }
+
+.file {
+    font-weight: bold;
+    text-align: center;
+    }
+
